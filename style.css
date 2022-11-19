@@ -5,9 +5,15 @@
 }
 
 body {
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
   text-align: center;
   background-color: grey;
   color: white;
+  overflow-x: hidden; /* If not; we'll see a scrool bar on the bottom of the screen, because we haven't hid the unseen boxes, we've just moved them on the far left or far right of the screen. So if we don't set the overflow-x to "hidden", there will be a scroll bar and if we scroll to left or right, we'll see our -500% positioned content boxes. */
+}
+
+h1 {
+  margin: 0.3rem;
 }
 
 .outer {
@@ -26,4 +32,16 @@ body {
   width: 20rem;
   height: 10rem;
   margin: 0.5rem;
+  box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+  transform: translatex(500%);
+  transition: transform 0.5s ease-in-out;
+}
+
+/* that's how we select only the even number queued selements */
+.box:nth-of-type(even) {
+  transform: translateX(-500%);
+}
+
+.box.show {
+  transform: translateX(0);
 }
